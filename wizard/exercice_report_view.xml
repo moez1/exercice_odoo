@@ -30,7 +30,6 @@
                 </sheet>
                 	<footer>
                         <button string="Imprimer" name="check_report" type="object" class="oe_highlight"/>
-                        <button string="Excel" name="export" class="oe_highlight targa_export"/>
                         or
                         <button string="Cancel" class="oe_link" special="cancel"/>
                     </footer>
