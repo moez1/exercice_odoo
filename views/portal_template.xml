@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	<!-- heritage de la template de rapport portal et ajouter les deux champs exercercice et image -->
+	<template id="exercice_sale_portal" name="exercice protal" inherit_id="sale.portal_order_page">
+        <xpath expr="//div[@class='mb8']" position="before">
+            <div class="mb8">
+                  <strong>Exercice :</strong> <span t-field="order.exercice" /><br/><br/>
+                  <strong>Image :</strong> <img t-if="order.image" t-att-src="'data:image/png;base64,%s' % to_text(order.image)" style="max-height: 45px;"/>
+                  <br/><br/>
+              </div>
+        </xpath>
+    </template>
+
+</odoo>

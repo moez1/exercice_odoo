@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <template id="fiche_exercice_report"> 
+    <t t-call="web.html_container">
+        <t t-call="web.internal_layout">
+            <div class="page">
+            <h1>moez</h1>
+           
+            
+    
+      <t t-foreach="docs" t-as="doc"> 
+                 
+                <div class="row">
+                    <div style="background-color:#e4eff3; margin-left: 14px;">
+                        <h1 style="color:#737b7f; text-align: center;">Rapport Exercice</h1>
+                    </div>
+                </div>
+                <p><strong>Sale : </strong>
+                <t t-foreach="doc.sale_ids" t-as="p">
+                    <span t-field="p.name"/> /
+                </t></p>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table table-bordered">                     
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;background-color:#346378;color:#ffffff;">Name</th>
+                                    <th style="text-align:center;background-color:#346378;color:#ffffff;">Description</th>
+                                    <th style="text-align:center;background-color:#346378;color:#ffffff;">Quantity</th>
+                                    <th style="text-align:center;background-color:#346378;color:#ffffff;">price unit</th>
+                                    <th style="text-align:center;background-color:#346378;color:#ffffff;">Total</th>
+                                </tr>               
+                            </thead>
+                            <tbody >
+                                <tr t-foreach="doc.sale_line_ids" t-as="c">
+                                    <td><span t-field="c.product_id.name"/></td>
+                                    <td><span t-field="c.name"/></td>
+                                    <td><span t-field="c.product_uom_qty"/></td>
+                                    <td><span t-field="c.price_unit"/></td>
+                                    <td><span t-field="c.price_subtotal"/></td>   
+                                </tr>                 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            
+        </t> 
+         </div>
+            </t>
+            </t>
+    </template>   
+
+    <report
+        id="action_exercice_rep"
+        model="exercice.report"
+        string="Rapport Exercice"
+        file="exercice_odoo.fiche_exercice_report"
+        name="exercice_odoo.fiche_exercice_report"        
+        report_type="qweb-pdf" />
+
+</data>
+</odoo>

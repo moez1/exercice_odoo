@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+    	<record id="exercice_report_form" model="ir.ui.view">
+            <field name="name">Generate Exercice Rapport</field>
+            <field name="model">exercice.report</field>
+            <field name="arch" type="xml">
+                <form string="Rapport Exercice">
+                <sheet>
+                	<group>
+                		<group>
+                			<field name="sale_ids" widget="many2many_tags" />
+                		</group>
+                		<group></group>
+	                </group>
+                    <notebook>
+                        <page string="order line">
+                            <field name="sale_line_ids">
+                                <tree create ="0" editable="bottom" string="Timesheet Activities" class="targa">
+                                    <field name="product_id"/>
+                                    <field name="name"/>
+                                    <field name="product_uom_qty"/>
+                                    <field name="price_unit"/>
+                                    <field name="price_subtotal"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                	<footer>
+                        <button string="Imprimer" name="check_report" type="object" class="oe_highlight"/>
+                        <button string="Excel" name="export" class="oe_highlight targa_export"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                    
+                </form>
+                </field>
+        </record>
+        
+         <record id="exercice_rapport_action" model="ir.actions.act_window">
+            <field name="name">Rapport Exercice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">exercice.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    
+        <menuitem action="exercice_rapport_action" id="menu_exercice_rapport_action_form" parent="sale.sale_order_menu"/>
+    
+    </data>
+</odoo>
